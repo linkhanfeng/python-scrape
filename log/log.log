@@ -1,0 +1,291 @@
+INFO:root:<!--[if HTML5]><![endif]-->
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]><html class="ie ie6 ie-lte9 ie-lte8 ie-lte7 no-js" lang="en-us"> <![endif]-->
+<!--[if IE 7]><html class="ie ie7 ie-lte9 ie-lte8 ie-lte7 no-js" lang="en-us"> <![endif]-->
+<!--[if IE 8]><html class="ie ie8 ie-lte9 ie-lte8 no-js" lang="en-us"> <![endif]-->
+<!--[if IE 9]><html class="ie9 ie-lte9 no-js" lang="en-us"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="en-us"> <!--<![endif]-->
+<head>
+<title>Example web scraping website</title>
+  <!--[if !HTML5]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <![endif]-->
+  <!-- www.phpied.com/conditional-comments-block-downloads/ -->
+  <!-- Always force latest IE rendering engine
+       (even in intranet) & Chrome Frame
+       Remove this if you use the .htaccess -->
+
+  <meta charset="utf-8" />
+
+  <!-- http://dev.w3.org/html5/markup/meta.name.html -->
+  <meta name="application-name" content="places" />
+
+  <!--  Mobile Viewport Fix
+        j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag
+        device-width: Occupy full width of the screen in its current orientation
+        initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
+        user-scalable = yes allows the user to zoom in -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="shortcut icon" href="/places/static/images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/places/static/images/favicon.png">
+
+  <!-- All JavaScript at the bottom, except for Modernizr which enables
+       HTML5 elements & feature detects -->
+  <script src="/places/static/js/modernizr.custom.js"></script>
+
+  <!-- include stylesheets -->
+
+
+  <script type="text/javascript"><!--
+    // These variables are used by the web2py_ajax_init function in web2py_ajax.js (which is loaded below).
+    var w2p_ajax_confirm_message = "Are you sure you want to delete this object?";
+    var w2p_ajax_disable_with_message = "Working...";
+    var w2p_ajax_date_format = "%Y-%m-%d";
+    var w2p_ajax_datetime_format = "%Y-%m-%d %H:%M:%S";
+    var ajax_error_500 = 'An error occured, please <a href="/places/default/view/China-47">reload</a> the page'
+    //--></script>
+
+<meta name="keywords" content="web2py, python, web scraping" />
+<meta name="generator" content="Web2py Web Framework" />
+<meta name="author" content="Richard Penman" />
+<script src="/places/static/js/jquery.js" type="text/javascript"></script><link href="/places/static/css/calendar.css" rel="stylesheet" type="text/css" /><script src="/places/static/js/calendar.js" type="text/javascript"></script><script src="/places/static/js/web2py.js" type="text/javascript"></script><link href="/places/static/css/web2py.css" rel="stylesheet" type="text/css" /><link href="/places/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" /><link href="/places/static/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" /><link href="/places/static/css/style.css" rel="stylesheet" type="text/css" /><link href="/places/static/css/web2py_bootstrap.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  <!-- uncomment here to load jquery-ui
+       <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+       <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+       uncomment to load jquery-ui //-->
+  <noscript><link href="/places/static/css/web2py_bootstrap_nojs.css" rel="stylesheet" type="text/css" /></noscript>
+
+</head>
+
+<body>
+  <!-- Navbar ================================================== -->
+  <div class="navbar navbar-inverse">
+    <div class="flash"></div>
+    <div class="navbar-inner">
+      <div class="container">
+
+        <!-- the next tag is necessary for bootstrap menus, do not remove -->
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" style="display:none;">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <ul id="navbar" class="nav pull-right"><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" rel="nofollow">Log In</a><ul class="dropdown-menu"><li><a href="/places/default/user/register?_next=/places/default/view/China-47" rel="nofollow"><i class="icon icon-user glyphicon glyphicon-user"></i> Sign Up</a></li><li class="divider"></li><li><a href="/places/default/user/login?_next=/places/default/view/China-47" rel="nofollow"><i class="icon icon-off glyphicon glyphicon-off"></i> Log In</a></li></ul></li></ul>
+        <div class="nav">
+
+          <ul class="nav"><li class="web2py-menu-first"><a href="/places/default/index">Home</a></li><li class="web2py-menu-last"><a href="/places/default/search">Search</a></li></ul>
+
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div><!--/top navbar -->
+
+  <div class="container">
+    <!-- Masthead ================================================== -->
+
+    <header class="mastheader row" id="header">
+        <div class="span12">
+            <div class="page-header">
+                <h1>
+                    Example web scraping website
+                    <small></small>
+                </h1>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="main" class="main row">
+
+
+        <div class="span12">
+
+
+
+<form action="#" enctype="multipart/form-data" method="post"><table><tr id="places_national_flag__row"><td class="w2p_fl"><label class="readonly" for="places_national_flag" id="places_national_flag__label">National Flag: </label></td><td class="w2p_fw"><img src="/places/static/images/flags/cn.png" /></td><td class="w2p_fc"></td></tr><tr id="places_area__row"><td class="w2p_fl"><label class="readonly" for="places_area" id="places_area__label">Area: </label></td><td class="w2p_fw">9,596,960 square kilometres</td><td class="w2p_fc"></td></tr><tr id="places_population__row"><td class="w2p_fl"><label class="readonly" for="places_population" id="places_population__label">Population: </label></td><td class="w2p_fw">1,330,044,000</td><td class="w2p_fc"></td></tr><tr id="places_iso__row"><td class="w2p_fl"><label class="readonly" for="places_iso" id="places_iso__label">Iso: </label></td><td class="w2p_fw">CN</td><td class="w2p_fc"></td></tr><tr id="places_country__row"><td class="w2p_fl"><label class="readonly" for="places_country" id="places_country__label">Country: </label></td><td class="w2p_fw">China</td><td class="w2p_fc"></td></tr><tr id="places_capital__row"><td class="w2p_fl"><label class="readonly" for="places_capital" id="places_capital__label">Capital: </label></td><td class="w2p_fw">Beijing</td><td class="w2p_fc"></td></tr><tr id="places_continent__row"><td class="w2p_fl"><label class="readonly" for="places_continent" id="places_continent__label">Continent: </label></td><td class="w2p_fw"><a href="/places/default/continent/AS">AS</a></td><td class="w2p_fc"></td></tr><tr id="places_tld__row"><td class="w2p_fl"><label class="readonly" for="places_tld" id="places_tld__label">Tld: </label></td><td class="w2p_fw">.cn</td><td class="w2p_fc"></td></tr><tr id="places_currency_code__row"><td class="w2p_fl"><label class="readonly" for="places_currency_code" id="places_currency_code__label">Currency Code: </label></td><td class="w2p_fw">CNY</td><td class="w2p_fc"></td></tr><tr id="places_currency_name__row"><td class="w2p_fl"><label class="readonly" for="places_currency_name" id="places_currency_name__label">Currency Name: </label></td><td class="w2p_fw">Yuan Renminbi</td><td class="w2p_fc"></td></tr><tr id="places_phone__row"><td class="w2p_fl"><label class="readonly" for="places_phone" id="places_phone__label">Phone: </label></td><td class="w2p_fw">86</td><td class="w2p_fc"></td></tr><tr id="places_postal_code_format__row"><td class="w2p_fl"><label class="readonly" for="places_postal_code_format" id="places_postal_code_format__label">Postal Code Format: </label></td><td class="w2p_fw">######</td><td class="w2p_fc"></td></tr><tr id="places_postal_code_regex__row"><td class="w2p_fl"><label class="readonly" for="places_postal_code_regex" id="places_postal_code_regex__label">Postal Code Regex: </label></td><td class="w2p_fw">^(\d{6})$</td><td class="w2p_fc"></td></tr><tr id="places_languages__row"><td class="w2p_fl"><label class="readonly" for="places_languages" id="places_languages__label">Languages: </label></td><td class="w2p_fw">zh-CN,yue,wuu,dta,ug,za</td><td class="w2p_fc"></td></tr><tr id="places_neighbours__row"><td class="w2p_fl"><label class="readonly" for="places_neighbours" id="places_neighbours__label">Neighbours: </label></td><td class="w2p_fw"><div><a href="/places/default/iso/LA">LA </a><a href="/places/default/iso/BT">BT </a><a href="/places/default/iso/TJ">TJ </a><a href="/places/default/iso/KZ">KZ </a><a href="/places/default/iso/MN">MN </a><a href="/places/default/iso/AF">AF </a><a href="/places/default/iso/NP">NP </a><a href="/places/default/iso/MM">MM </a><a href="/places/default/iso/KG">KG </a><a href="/places/default/iso/PK">PK </a><a href="/places/default/iso/KP">KP </a><a href="/places/default/iso/RU">RU </a><a href="/places/default/iso/VN">VN </a><a href="/places/default/iso/IN">IN </a></div></td><td class="w2p_fc"></td></tr></table><div style="display:none;"><input name="id" type="hidden" value="6588587" /></div></form>
+
+<a href="/places/default/edit/China-47">Edit</a>
+
+
+        </div>
+
+
+    </section><!--/main-->
+
+    <!-- Footer ================================================== -->
+    <div class="row">
+        <footer class="footer span12" id="footer">
+        </footer>
+    </div>
+
+  </div> <!-- /container -->
+
+  <!-- The javascript =============================================
+       (Placed at the end of the document so the pages load faster) -->
+  <script src="/places/static/js/bootstrap.min.js"></script>
+  <script src="/places/static/js/web2py_bootstrap.js"></script>
+  <!--[if lt IE 7 ]>
+      <script src="/places/static/js/dd_belatedpng.js"></script>
+      <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+      <![endif]-->
+</body>
+</html>
+
+
+INFO:root:<!--[if HTML5]><![endif]-->
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]><html class="ie ie6 ie-lte9 ie-lte8 ie-lte7 no-js" lang="en-us"> <![endif]-->
+<!--[if IE 7]><html class="ie ie7 ie-lte9 ie-lte8 ie-lte7 no-js" lang="en-us"> <![endif]-->
+<!--[if IE 8]><html class="ie ie8 ie-lte9 ie-lte8 no-js" lang="en-us"> <![endif]-->
+<!--[if IE 9]><html class="ie9 ie-lte9 no-js" lang="en-us"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="en-us"> <!--<![endif]-->
+<head>
+<title>Example web scraping website</title>
+  <!--[if !HTML5]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <![endif]-->
+  <!-- www.phpied.com/conditional-comments-block-downloads/ -->
+  <!-- Always force latest IE rendering engine
+       (even in intranet) & Chrome Frame
+       Remove this if you use the .htaccess -->
+
+  <meta charset="utf-8" />
+
+  <!-- http://dev.w3.org/html5/markup/meta.name.html -->
+  <meta name="application-name" content="places" />
+
+  <!--  Mobile Viewport Fix
+        j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag
+        device-width: Occupy full width of the screen in its current orientation
+        initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
+        user-scalable = yes allows the user to zoom in -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="shortcut icon" href="/places/static/images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/places/static/images/favicon.png">
+
+  <!-- All JavaScript at the bottom, except for Modernizr which enables
+       HTML5 elements & feature detects -->
+  <script src="/places/static/js/modernizr.custom.js"></script>
+
+  <!-- include stylesheets -->
+
+
+  <script type="text/javascript"><!--
+    // These variables are used by the web2py_ajax_init function in web2py_ajax.js (which is loaded below).
+    var w2p_ajax_confirm_message = "Are you sure you want to delete this object?";
+    var w2p_ajax_disable_with_message = "Working...";
+    var w2p_ajax_date_format = "%Y-%m-%d";
+    var w2p_ajax_datetime_format = "%Y-%m-%d %H:%M:%S";
+    var ajax_error_500 = 'An error occured, please <a href="/places/default/view/China-47">reload</a> the page'
+    //--></script>
+
+<meta name="keywords" content="web2py, python, web scraping" />
+<meta name="generator" content="Web2py Web Framework" />
+<meta name="author" content="Richard Penman" />
+<script src="/places/static/js/jquery.js" type="text/javascript"></script><link href="/places/static/css/calendar.css" rel="stylesheet" type="text/css" /><script src="/places/static/js/calendar.js" type="text/javascript"></script><script src="/places/static/js/web2py.js" type="text/javascript"></script><link href="/places/static/css/web2py.css" rel="stylesheet" type="text/css" /><link href="/places/static/css/bootstrap.min.css" rel="stylesheet" type="text/css" /><link href="/places/static/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" /><link href="/places/static/css/style.css" rel="stylesheet" type="text/css" /><link href="/places/static/css/web2py_bootstrap.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  <!-- uncomment here to load jquery-ui
+       <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+       <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+       uncomment to load jquery-ui //-->
+  <noscript><link href="/places/static/css/web2py_bootstrap_nojs.css" rel="stylesheet" type="text/css" /></noscript>
+
+</head>
+
+<body>
+  <!-- Navbar ================================================== -->
+  <div class="navbar navbar-inverse">
+    <div class="flash"></div>
+    <div class="navbar-inner">
+      <div class="container">
+
+        <!-- the next tag is necessary for bootstrap menus, do not remove -->
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" style="display:none;">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <ul id="navbar" class="nav pull-right"><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" rel="nofollow">Log In</a><ul class="dropdown-menu"><li><a href="/places/default/user/register?_next=/places/default/view/China-47" rel="nofollow"><i class="icon icon-user glyphicon glyphicon-user"></i> Sign Up</a></li><li class="divider"></li><li><a href="/places/default/user/login?_next=/places/default/view/China-47" rel="nofollow"><i class="icon icon-off glyphicon glyphicon-off"></i> Log In</a></li></ul></li></ul>
+        <div class="nav">
+
+          <ul class="nav"><li class="web2py-menu-first"><a href="/places/default/index">Home</a></li><li class="web2py-menu-last"><a href="/places/default/search">Search</a></li></ul>
+
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div><!--/top navbar -->
+
+  <div class="container">
+    <!-- Masthead ================================================== -->
+
+    <header class="mastheader row" id="header">
+        <div class="span12">
+            <div class="page-header">
+                <h1>
+                    Example web scraping website
+                    <small></small>
+                </h1>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="main" class="main row">
+
+
+        <div class="span12">
+
+
+
+<form action="#" enctype="multipart/form-data" method="post"><table><tr id="places_national_flag__row"><td class="w2p_fl"><label class="readonly" for="places_national_flag" id="places_national_flag__label">National Flag: </label></td><td class="w2p_fw"><img src="/places/static/images/flags/cn.png" /></td><td class="w2p_fc"></td></tr><tr id="places_area__row"><td class="w2p_fl"><label class="readonly" for="places_area" id="places_area__label">Area: </label></td><td class="w2p_fw">9,596,960 square kilometres</td><td class="w2p_fc"></td></tr><tr id="places_population__row"><td class="w2p_fl"><label class="readonly" for="places_population" id="places_population__label">Population: </label></td><td class="w2p_fw">1,330,044,000</td><td class="w2p_fc"></td></tr><tr id="places_iso__row"><td class="w2p_fl"><label class="readonly" for="places_iso" id="places_iso__label">Iso: </label></td><td class="w2p_fw">CN</td><td class="w2p_fc"></td></tr><tr id="places_country__row"><td class="w2p_fl"><label class="readonly" for="places_country" id="places_country__label">Country: </label></td><td class="w2p_fw">China</td><td class="w2p_fc"></td></tr><tr id="places_capital__row"><td class="w2p_fl"><label class="readonly" for="places_capital" id="places_capital__label">Capital: </label></td><td class="w2p_fw">Beijing</td><td class="w2p_fc"></td></tr><tr id="places_continent__row"><td class="w2p_fl"><label class="readonly" for="places_continent" id="places_continent__label">Continent: </label></td><td class="w2p_fw"><a href="/places/default/continent/AS">AS</a></td><td class="w2p_fc"></td></tr><tr id="places_tld__row"><td class="w2p_fl"><label class="readonly" for="places_tld" id="places_tld__label">Tld: </label></td><td class="w2p_fw">.cn</td><td class="w2p_fc"></td></tr><tr id="places_currency_code__row"><td class="w2p_fl"><label class="readonly" for="places_currency_code" id="places_currency_code__label">Currency Code: </label></td><td class="w2p_fw">CNY</td><td class="w2p_fc"></td></tr><tr id="places_currency_name__row"><td class="w2p_fl"><label class="readonly" for="places_currency_name" id="places_currency_name__label">Currency Name: </label></td><td class="w2p_fw">Yuan Renminbi</td><td class="w2p_fc"></td></tr><tr id="places_phone__row"><td class="w2p_fl"><label class="readonly" for="places_phone" id="places_phone__label">Phone: </label></td><td class="w2p_fw">86</td><td class="w2p_fc"></td></tr><tr id="places_postal_code_format__row"><td class="w2p_fl"><label class="readonly" for="places_postal_code_format" id="places_postal_code_format__label">Postal Code Format: </label></td><td class="w2p_fw">######</td><td class="w2p_fc"></td></tr><tr id="places_postal_code_regex__row"><td class="w2p_fl"><label class="readonly" for="places_postal_code_regex" id="places_postal_code_regex__label">Postal Code Regex: </label></td><td class="w2p_fw">^(\d{6})$</td><td class="w2p_fc"></td></tr><tr id="places_languages__row"><td class="w2p_fl"><label class="readonly" for="places_languages" id="places_languages__label">Languages: </label></td><td class="w2p_fw">zh-CN,yue,wuu,dta,ug,za</td><td class="w2p_fc"></td></tr><tr id="places_neighbours__row"><td class="w2p_fl"><label class="readonly" for="places_neighbours" id="places_neighbours__label">Neighbours: </label></td><td class="w2p_fw"><div><a href="/places/default/iso/LA">LA </a><a href="/places/default/iso/BT">BT </a><a href="/places/default/iso/TJ">TJ </a><a href="/places/default/iso/KZ">KZ </a><a href="/places/default/iso/MN">MN </a><a href="/places/default/iso/AF">AF </a><a href="/places/default/iso/NP">NP </a><a href="/places/default/iso/MM">MM </a><a href="/places/default/iso/KG">KG </a><a href="/places/default/iso/PK">PK </a><a href="/places/default/iso/KP">KP </a><a href="/places/default/iso/RU">RU </a><a href="/places/default/iso/VN">VN </a><a href="/places/default/iso/IN">IN </a></div></td><td class="w2p_fc"></td></tr></table><div style="display:none;"><input name="id" type="hidden" value="6588587" /></div></form>
+
+<a href="/places/default/edit/China-47">Edit</a>
+
+
+        </div>
+
+
+    </section><!--/main-->
+
+    <!-- Footer ================================================== -->
+    <div class="row">
+        <footer class="footer span12" id="footer">
+        </footer>
+    </div>
+
+  </div> <!-- /container -->
+
+  <!-- The javascript =============================================
+       (Placed at the end of the document so the pages load faster) -->
+  <script src="/places/static/js/bootstrap.min.js"></script>
+  <script src="/places/static/js/web2py_bootstrap.js"></script>
+  <!--[if lt IE 7 ]>
+      <script src="/places/static/js/dd_belatedpng.js"></script>
+      <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+      <![endif]-->
+</body>
+</html>
+
+
+INFO:root:[{'url': '/places/default/iso/CN', 'size': 10520, 'country': ['China'], 'flag': ['/places/static/images/flags/cn.png']}, {'url': '/places/default/iso/IN', 'size': 10262, 'country': ['India'], 'flag': ['/places/static/images/flags/in.png']}, {'url': '/places/default/iso/BD', 'size': 10034, 'country': ['Bangladesh'], 'flag': ['/places/static/images/flags/bd.png']}, {'url': '/places/default/iso/VN', 'size': 10069, 'country': ['Vietnam'], 'flag': ['/places/static/images/flags/vn.png']}, {'url': '/places/default/iso/KH', 'size': 10070, 'country': ['Cambodia'], 'flag': ['/places/static/images/flags/kh.png']}, {'url': '/places/default/iso/TH', 'size': 10106, 'country': ['Thailand'], 'flag': ['/places/static/images/flags/th.png']}, {'url': '/places/default/iso/MY', 'size': 10095, 'country': ['Malaysia'], 'flag': ['/places/static/images/flags/my.png']}, {'url': '/places/default/iso/ID', 'size': 10082, 'country': ['Indonesia'], 'flag': ['/places/static/images/flags/id.png']}, {'url': '/places/default/iso/TL', 'size': 9986, 'country': ['East Timor'], 'flag': ['/places/static/images/flags/tl.png']}, {'url': '/places/default/iso/PG', 'size': 10040, 'country': ['Papua New Guinea'], 'flag': ['/places/static/images/flags/pg.png']}, {'url': '/places/default/iso/BN', 'size': 9997, 'country': ['Brunei'], 'flag': ['/places/static/images/flags/bn.png']}, {'url': '/places/default/iso/RU', 'size': 10584, 'country': ['Russia'], 'flag': ['/places/static/images/flags/ru.png']}, {'url': '/places/default/iso/AZ', 'size': 10161, 'country': ['Azerbaijan'], 'flag': ['/places/static/images/flags/az.png']}, {'url': '/places/default/iso/TR', 'size': 10268, 'country': ['Turkey'], 'flag': ['/places/static/images/flags/tr.png']}, {'url': '/places/default/iso/BG', 'size': 10181, 'country': ['Bulgaria'], 'flag': ['/places/static/images/flags/bg.png']}, {'url': '/places/default/iso/RS', 'size': 10305, 'country': ['Serbia'], 'flag': ['/places/static/images/flags/rs.png']}, {'url': '/places/default/iso/XK', 'size': 10076, 'country': ['Kosovo'], 'flag': ['/places/static/images/flags/xk.png']}, {'url': '/places/default/iso/ME', 'size': 10168, 'country': ['Montenegro'], 'flag': ['/places/static/images/flags/me.png']}, {'url': '/places/default/iso/BA', 'size': 10182, 'country': ['Bosnia and Herzegovina'], 'flag': ['/places/static/images/flags/ba.png']}, {'url': '/places/default/iso/HR', 'size': 10185, 'country': ['Croatia'], 'flag': ['/places/static/images/flags/hr.png']}, {'url': '/places/default/iso/SI', 'size': 10113, 'country': ['Slovenia'], 'flag': ['/places/static/images/flags/si.png']}, {'url': '/places/default/iso/AT', 'size': 10262, 'country': ['Austria'], 'flag': ['/places/static/images/flags/at.png']}, {'url': '/places/default/iso/LI', 'size': 10042, 'country': ['Liechtenstein'], 'flag': ['/places/static/images/flags/li.png']}, {'url': '/places/default/iso/CZ', 'size': 10134, 'country': ['Czech Republic'], 'flag': ['/places/static/images/flags/cz.png']}, {'url': '/places/default/iso/SK', 'size': 10149, 'country': ['Slovakia'], 'flag': ['/places/static/images/flags/sk.png']}, {'url': '/places/default/iso/DE', 'size': 10293, 'country': ['Germany'], 'flag': ['/places/static/images/flags/de.png']}, {'url': '/places/default/iso/FR', 'size': 10269, 'country': ['France'], 'flag': ['/places/static/images/flags/fr.png']}, {'url': '/places/default/iso/ES', 'size': 10142, 'country': ['Spain'], 'flag': ['/places/static/images/flags/es.png']}, {'url': '/places/default/iso/MA', 'size': 10065, 'country': ['Morocco'], 'flag': ['/places/static/images/flags/ma.png']}, {'url': '/places/default/iso/EH', 'size': 10084, 'country': ['Western Sahara'], 'flag': ['/places/static/images/flags/eh.png']}, {'url': '/places/default/iso/MR', 'size': 10128, 'country': ['Mauritania'], 'flag': ['/places/static/images/flags/mr.png']}, {'url': '/places/default/iso/ML', 'size': 10198, 'country': ['Mali'], 'flag': ['/places/static/images/flags/ml.png']}, {'url': '/places/default/iso/BF', 'size': 10194, 'country': ['Burkina Faso'], 'flag': ['/places/static/images/flags/bf.png']}, {'url': '/places/default/iso/TG', 'size': 10047, 'country': ['Togo'], 'flag': ['/places/static/images/flags/tg.png']}, {'url': '/places/default/iso/GH', 'size': 10041, 'country': ['Ghana'], 'flag': ['/places/static/images/flags/gh.png']}, {'url': '/places/default/iso/BJ', 'size': 10077, 'country': ['Benin'], 'flag': ['/places/static/images/flags/bj.png']}, {'url': '/places/default/iso/NG', 'size': 10115, 'country': ['Nigeria'], 'flag': ['/places/static/images/flags/ng.png']}, {'url': '/places/default/iso/CM', 'size': 10176, 'country': ['Cameroon'], 'flag': ['/places/static/images/flags/cm.png']}, {'url': '/places/default/iso/CG', 'size': 10211, 'country': ['Republic of the Congo'], 'flag': ['/places/static/images/flags/cg.png']}, {'url': '/places/default/iso/AO', 'size': 10078, 'country': ['Angola'], 'flag': ['/places/static/images/flags/ao.png']}, {'url': '/places/default/iso/ZM', 'size': 10241, 'country': ['Zambia'], 'flag': ['/places/static/images/flags/zm.png']}, {'url': '/places/default/iso/MW', 'size': 10055, 'country': ['Malawi'], 'flag': ['/places/static/images/flags/mw.png']}, {'url': '/places/default/iso/MZ', 'size': 10202, 'country': ['Mozambique'], 'flag': ['/places/static/images/flags/mz.png']}, {'url': '/places/default/iso/ZA', 'size': 10239, 'country': ['South Africa'], 'flag': ['/places/static/images/flags/za.png']}, {'url': '/places/default/iso/LS', 'size': 9986, 'country': ['Lesotho'], 'flag': ['/places/static/images/flags/ls.png']}, {'url': '/places/default/iso/BW', 'size': 10055, 'country': ['Botswana'], 'flag': ['/places/static/images/flags/bw.png']}, {'url': '/places/default/iso/SZ', 'size': 10045, 'country': ['Swaziland'], 'flag': ['/places/static/images/flags/sz.png']}, {'url': '/places/default/iso/TZ', 'size': 10262, 'country': ['Tanzania'], 'flag': ['/places/static/images/flags/tz.png']}, {'url': '/places/default/iso/UG', 'size': 10136, 'country': ['Uganda'], 'flag': ['/places/static/images/flags/ug.png']}, {'url': '/places/default/iso/SS', 'size': 10216, 'country': ['South Sudan'], 'flag': ['/places/static/images/flags/ss.png']}, {'url': '/places/default/iso//', 'size': 7902, 'country': [], 'flag': ['/places/static/images/flags/af.png', '/places/static/images/flags/ax.png', '/places/static/images/flags/al.png', '/places/static/images/flags/dz.png', '/places/static/images/flags/as.png', '/places/static/images/flags/ad.png', '/places/static/images/flags/ao.png', '/places/static/images/flags/ai.png', '/places/static/images/flags/aq.png', '/places/static/images/flags/ag.png']}, {'url': '/places/default/iso/SD', 'size': 10223, 'country': ['Sudan'], 'flag': ['/places/static/images/flags/sd.png']}, {'url': '/places/default/iso/LY', 'size': 10167, 'country': ['Libya'], 'flag': ['/places/static/images/flags/ly.png']}, {'url': '/places/default/iso/TN', 'size': 10023, 'country': ['Tunisia'], 'flag': ['/places/static/images/flags/tn.png']}, {'url': '/places/default/iso/ER', 'size': 10060, 'country': ['Eritrea'], 'flag': ['/places/static/images/flags/er.png']}, {'url': '/places/default/iso/DJ', 'size': 10059, 'country': ['Djibouti'], 'flag': ['/places/static/images/flags/dj.png']}, {'url': '/places/default/iso/SO', 'size': 10095, 'country': ['Somalia'], 'flag': ['/places/static/images/flags/so.png']}, {'url': '/places/default/iso/EG', 'size': 10054, 'country': ['Egypt'], 'flag': ['/places/static/images/flags/eg.png']}, {'url': '/places/default/iso/IL', 'size': 10149, 'country': ['Israel'], 'flag': ['/places/static/images/flags/il.png']}, {'url': '/places/default/iso/PS', 'size': 10084, 'country': ['Palestinian Territory'], 'flag': ['/places/static/images/flags/ps.png']}, {'url': '/places/default/iso/LB', 'size': 10049, 'country': ['Lebanon'], 'flag': ['/places/static/images/flags/lb.png']}, {'url': '/places/default/iso/JO', 'size': 10137, 'country': ['Jordan'], 'flag': ['/places/static/images/flags/jo.png']}, {'url': '/places/default/iso/SA', 'size': 10248, 'country': ['Saudi Arabia'], 'flag': ['/places/static/images/flags/sa.png']}, {'url': '/places/default/iso/KW', 'size': 10023, 'country': ['Kuwait'], 'flag': ['/places/static/images/flags/kw.png']}, {'url': '/places/default/iso/AE', 'size': 10087, 'country': ['United Arab Emirates'], 'flag': ['/places/static/images/flags/ae.png']}, {'url': '/places/default/iso/YE', 'size': 9996, 'country': ['Yemen'], 'flag': ['/places/static/images/flags/ye.png']}, {'url': '/places/default/iso/OM', 'size': 10053, 'country': ['Oman'], 'flag': ['/places/static/images/flags/om.png']}, {'url': '/places/default/iso/QA', 'size': 9954, 'country': ['Qatar'], 'flag': ['/places/static/images/flags/qa.png']}, {'url': '/places/default/iso/ET', 'size': 10213, 'country': ['Ethiopia'], 'flag': ['/places/static/images/flags/et.png']}, {'url': '/places/default/iso/BI', 'size': 10048, 'country': ['Burundi'], 'flag': ['/places/static/images/flags/bi.png']}, {'url': '/places/default/iso/RW', 'size': 10094, 'country': ['Rwanda'], 'flag': ['/places/static/images/flags/rw.png']}, {'url': '/places/default/iso/KE', 'size': 10142, 'country': ['Kenya'], 'flag': ['/places/static/images/flags/ke.png']}, {'url': '/places/default/iso/ZW', 'size': 10103, 'country': ['Zimbabwe'], 'flag': ['/places/static/images/flags/zw.png']}, {'url': '/places/default/iso/NA', 'size': 10103, 'country': ['Namibia'], 'flag': ['/places/static/images/flags/na.png']}, {'url': '/places/default/iso/CD', 'size': 10419, 'country': ['Democratic Republic of the Congo'], 'flag': ['/places/static/images/flags/cd.png']}, {'url': '/places/default/iso/GQ', 'size': 10055, 'country': ['Equatorial Guinea'], 'flag': ['/places/static/images/flags/gq.png']}, {'url': '/places/default/iso/GA', 'size': 10037, 'country': ['Gabon'], 'flag': ['/places/static/images/flags/ga.png']}, {'url': '/places/default/iso/CF', 'size': 10257, 'country': ['Central African Republic'], 'flag': ['/places/static/images/flags/cf.png']}, {'url': '/places/default/iso/TD', 'size': 10169, 'country': ['Chad'], 'flag': ['/places/static/images/flags/td.png']}, {'url': '/places/default/iso/GN', 'size': 10160, 'country': ['Guinea'], 'flag': ['/places/static/images/flags/gn.png']}, {'url': '/places/default/iso/GW', 'size': 10049, 'country': ['Guinea-Bissau'], 'flag': ['/places/static/images/flags/gw.png']}, {'url': '/places/default/iso/SL', 'size': 10041, 'country': ['Sierra Leone'], 'flag': ['/places/static/images/flags/sl.png']}, {'url': '/places/default/iso/LR', 'size': 10063, 'country': ['Liberia'], 'flag': ['/places/static/images/flags/lr.png']}, {'url': '/places/default/iso/CI', 'size': 10154, 'country': ['Ivory Coast'], 'flag': ['/places/static/images/flags/ci.png']}, {'url': '/places/default/iso/NE', 'size': 10223, 'country': ['Niger'], 'flag': ['/places/static/images/flags/ne.png']}, {'url': '/places/default/iso/SN', 'size': 10152, 'country': ['Senegal'], 'flag': ['/places/static/images/flags/sn.png']}, {'url': '/places/default/iso/GM', 'size': 9972, 'country': ['Gambia'], 'flag': ['/places/static/images/flags/gm.png']}, {'url': '/places/default/iso/DZ', 'size': 10217, 'country': ['Algeria'], 'flag': ['/places/static/images/flags/dz.png']}, {'url': '/places/default/iso/GI', 'size': 9976, 'country': ['Gibraltar'], 'flag': ['/places/static/images/flags/gi.png']}, {'url': '/places/default/iso/PT', 'size': 9992, 'country': ['Portugal'], 'flag': ['/places/static/images/flags/pt.png']}, {'url': '/places/default/iso/MC', 'size': 9972, 'country': ['Monaco'], 'flag': ['/places/static/images/flags/mc.png']}, {'url': '/places/default/iso/AD', 'size': 10019, 'country': ['Andorra'], 'flag': ['/places/static/images/flags/ad.png']}, {'url': '/places/default/iso/LU', 'size': 10085, 'country': ['Luxembourg'], 'flag': ['/places/static/images/flags/lu.png']}, {'url': '/places/default/iso/BE', 'size': 10108, 'country': ['Belgium'], 'flag': ['/places/static/images/flags/be.png']}, {'url': '/places/default/iso/DK', 'size': 9990, 'country': ['Denmark'], 'flag': ['/places/static/images/flags/dk.png']}, {'url': '/places/default/iso/NL', 'size': 10058, 'country': ['Netherlands'], 'flag': ['/places/static/images/flags/nl.png']}, {'url': '/places/default/iso/CH', 'size': 10172, 'country': ['Switzerland'], 'flag': ['/places/static/images/flags/ch.png']}, {'url': '/places/default/iso/IT', 'size': 10192, 'country': ['Italy'], 'flag': ['/places/static/images/flags/it.png']}, {'url': '/places/default/iso/SM', 'size': 9992, 'country': ['San Marino'], 'flag': ['/places/static/images/flags/sm.png']}, {'url': '/places/default/iso/VA', 'size': 9977, 'country': ['Vatican'], 'flag': ['/places/static/images/flags/va.png']}, {'url': '/places/default/iso/HU', 'size': 10261, 'country': ['Hungary'], 'flag': ['/places/static/images/flags/hu.png']}, {'url': '/places/default/iso/AL', 'size': 10156, 'country': ['Albania'], 'flag': ['/places/static/images/flags/al.png']}, {'url': '/places/default/iso/CS', 'size': 10300, 'country': ['Serbia and Montenegro'], 'flag': ['/places/static/images/flags/cs.png']}, {'url': '/places/default/iso/RO', 'size': 10187, 'country': ['Romania'], 'flag': ['/places/static/images/flags/ro.png']}, {'url': '/places/default/iso/MD', 'size': 10036, 'country': ['Moldova'], 'flag': ['/places/static/images/flags/md.png']}, {'url': '/places/default/iso/MK', 'size': 10199, 'country': ['Macedonia'], 'flag': ['/places/static/images/flags/mk.png']}, {'url': '/places/default/iso/GR', 'size': 10098, 'country': ['Greece'], 'flag': ['/places/static/images/flags/gr.png']}, {'url': '/places/default/iso/IQ', 'size': 10174, 'country': ['Iraq'], 'flag': ['/places/static/images/flags/iq.png']}, {'url': '/places/default/iso/SY', 'size': 10136, 'country': ['Syria'], 'flag': ['/places/static/images/flags/sy.png']}, {'url': '/places/default/iso/AM', 'size': 10094, 'country': ['Armenia'], 'flag': ['/places/static/images/flags/am.png']}, {'url': '/places/default/iso/IR', 'size': 10216, 'country': ['Iran'], 'flag': ['/places/static/images/flags/ir.png']}, {'url': '/places/default/iso/TM', 'size': 10132, 'country': ['Turkmenistan'], 'flag': ['/places/static/images/flags/tm.png']}, {'url': '/places/default/iso/UZ', 'size': 10161, 'country': ['Uzbekistan'], 'flag': ['/places/static/images/flags/uz.png']}, {'url': '/places/default/iso/NO', 'size': 10061, 'country': ['Norway'], 'flag': ['/places/static/images/flags/no.png']}, {'url': '/places/default/iso/SE', 'size': 10039, 'country': ['Sweden'], 'flag': ['/places/static/images/flags/se.png']}, {'url': '/places/default/iso/FI', 'size': 10075, 'country': ['Finland'], 'flag': ['/places/static/images/flags/fi.png']}, {'url': '/places/default/iso/LT', 'size': 10124, 'country': ['Lithuania'], 'flag': ['/places/static/images/flags/lt.png']}, {'url': '/places/default/iso/EE', 'size': 10016, 'country': ['Estonia'], 'flag': ['/places/static/images/flags/ee.png']}, {'url': '/places/default/iso/PL', 'size': 10214, 'country': ['Poland'], 'flag': ['/places/static/images/flags/pl.png']}, {'url': '/places/default/iso/LV', 'size': 10104, 'country': ['Latvia'], 'flag': ['/places/static/images/flags/lv.png']}, {'url': '/places/default/iso/UA', 'size': 10235, 'country': ['Ukraine'], 'flag': ['/places/static/images/flags/ua.png']}, {'url': '/places/default/iso/BY', 'size': 10137, 'country': ['Belarus'], 'flag': ['/places/static/images/flags/by.png']}, {'url': '/places/default/iso/GE', 'size': 10101, 'country': ['Georgia'], 'flag': ['/places/static/images/flags/ge.png']}, {'url': '/places/default/iso/KP', 'size': 10085, 'country': ['North Korea'], 'flag': ['/places/static/images/flags/kp.png']}, {'url': '/places/default/iso/KR', 'size': 10018, 'country': ['South Korea'], 'flag': ['/places/static/images/flags/kr.png']}, {'url': '/places/default/iso/PK', 'size': 10129, 'country': ['Pakistan'], 'flag': ['/places/static/images/flags/pk.png']}, {'url': '/places/default/iso/KG', 'size': 10119, 'country': ['Kyrgyzstan'], 'flag': ['/places/static/images/flags/kg.png']}, {'url': '/places/default/iso/MM', 'size': 10142, 'country': ['Myanmar'], 'flag': ['/places/static/images/flags/mm.png']}, {'url': '/places/default/iso/NP', 'size': 10015, 'country': ['Nepal'], 'flag': ['/places/static/images/flags/np.png']}, {'url': '/places/default/iso/AF', 'size': 10192, 'country': ['Afghanistan'], 'flag': ['/places/static/images/flags/af.png']}, {'url': '/places/default/iso/MN', 'size': 10034, 'country': ['Mongolia'], 'flag': ['/places/static/images/flags/mn.png']}, {'url': '/places/default/iso/KZ', 'size': 10158, 'country': ['Kazakhstan'], 'flag': ['/places/static/images/flags/kz.png']}, {'url': '/places/default/iso/TJ', 'size': 10120, 'country': ['Tajikistan'], 'flag': ['/places/static/images/flags/tj.png']}, {'url': '/places/default/iso/BT', 'size': 9996, 'country': ['Bhutan'], 'flag': ['/places/static/images/flags/bt.png']}, {'url': '/places/default/iso/LA', 'size': 10130, 'country': ['Laos'], 'flag': ['/places/static/images/flags/la.png']}]
+INFO:root:135
+INFO:root:[{'url': 'http://example.webscraping.com/', 'robots': 'Disallow'}]
+INFO:root:[{'url': 'http://example.webscraping.com/', 'robots': 'Disallow'}]
+INFO:root:[{'url': 'http://example.webscraping.com/', 'robots': 'Disallow'}]
+INFO:root:[{'url': 'http://example.webscraping.com/', 'robots': 'Disallow'}]
+INFO:root:[{'url': 'http://example.webscraping.com/', 'robots': 'Disallow'}]
+INFO:root:[{'url': 'http://example.webscraping.com/', 'robots': 'Disallow'}]
+INFO:root:[{'url': 'http://example.webscraping.com/', 'robots': 'Disallow'}]

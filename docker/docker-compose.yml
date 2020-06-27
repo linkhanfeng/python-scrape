@@ -1,0 +1,26 @@
+version: '3.6'
+
+networks:
+  backend:
+    driver: bridge
+
+services:
+### Workspace ##################################
+  python:
+    build:
+      context: ./python/
+      args:
+        - TIME_ZONE=${TIME_ZONE}
+        - CHANGE_SOURCE=${CHANGE_SOURCE}
+        - UBUNTU_SOURCE=${UBUNTU_SOURCE}
+        - PYTHON_SOURCE_INDEX=${PYTHON_SOURCE_INDEX}
+        - PYTHON_SOURCE_TRUSTED=${PYTHON_SOURCE_TRUSTED}
+        - APP_CODE_PATH_CONTAINER=${APP_CODE_PATH_CONTAINER}
+        - PYTHON_VERSION=${PYTHON_VERSION}
+    volumes:
+      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+    networks:
+      - backend
+    working_dir: ${APP_CODE_PATH_CONTAINER}
+    tty: true
+    # command: [ "python", "main.py" ]

@@ -1,11 +1,15 @@
-import urllib.request
 import re
 import itertools
-import urllib.robotparser
+import socket
+
+from urllib import robotparser
+from urllib import request
 from urllib.parse import urlparse
 from urllib.parse import urljoin
 import logging
 
+import requests
+import socks
 import builtwith
 import whois
 
@@ -49,7 +53,7 @@ class Spider:
         '''
         rebotUrl= rebotUrl if rebotUrl else self.urlInfo['robots']
         userAngent= userAngent if userAngent else self.userAngent
-        rp = urllib.robotparser.RobotFileParser()
+        rp = robotparser.RobotFileParser()
         can_fetch = True
         try:
             rp.set_url(rebotUrl)
@@ -108,16 +112,42 @@ class Spider:
             [str] -- [网页字符串]
         '''
         url = url if url else self.url
-        userAngent = url if url else self.userAngent
+        userAngent = userAngent if userAngent else self.userAngent
+        print(23333, url, userAngent)
         # html = None
         html = ''
         try:
-            req = urllib.request.Request(url)
-            req.add_header('User-Agent', userAngent)
-            html = urllib.request.urlopen(req).read().decode('utf-8')
-            print('下载网页OK::', url)
-        except urllib.request.HTTPError as e:
-            print('服务器返回错误::', e.reason)
+            # 不使用代理
+            # req = request.Request(url)
+            # req.add_header('User-Agent', userAngent)
+            # html = request.urlopen(req, timeout=30).read().decode('utf-8')
+
+            # http 代理
+            # proxy_handler = request.ProxyHandler({
+            #     'http': 'http://182.34.37.0:9999', # 如有有密码的话 'http://username:password@127.0.0.1:9743'
+            #     'https': 'https://117.69.150.84:9999',
+            # })
+            # proxy_handler = request.ProxyHandler({'https': 'http://127.0.0.1/50877'})
+            # opener = request.build_opener(proxy_handler)
+            # opener.addheaders = [('User-Agent', userAngent)]
+            # html = opener.open(url, timeout=30).read().decode('utf-8')
+            # opener = request.build_opener()
+            # opener.addheaders = [('User-Agent', userAngent)]
+            # html = opener.open(url, timeout=30).read().decode('utf-8')
+
+            # SOCKS5 代理 没有成功
+            # socks.set_default_proxy(socks.SOCKS5, '104.198.155.18', 1080)
+            # socket.socket = socks.socksocket
+            # html = request.urlopen(url, timeout=30).read().decode('utf-8')
+
+            # requests SOCKS5 代理
+            proxies = {
+                'http': 'socks5://174.76.35.29:36177',
+                'https': 'socks5://174.76.35.29:36177',
+            }
+            html = requests.get(url, proxies=proxies).text
+            print('下载网页 成功::', url)
+        except request.HTTPError as e:
             if retriesNum > 0:
                 if hasattr(e, 'code') and 500 <= e.code < 600:
                     print(' 500错误重试::', e.code, url)
@@ -128,6 +158,8 @@ class Spider:
                 return self.download(tryUrl, fixUrl=False)
             else:
                 print('url格式错误,原始地址在上一条log::', url)
+        except Exception as e:
+            print('下载网页 失败::', url, e)
         return html
 
     # ------------------------------------------------------------------------
@@ -243,6 +275,8 @@ class Spider:
         return links
 
 
+googleUrl = 'https://www.google.com/'
+youtubeUrl = 'https://www.youtube.com/'
 baiduUrl = 'http://www.baidu.com/'
 bilibiliUrl = 'https://www.bilibili.com/'
 biliPaging = 'https://www.bilibili.com/v/anime/information/#/all/default/0/{0}/'  # 番剧资讯分页
@@ -257,9 +291,12 @@ spider = Spider(exampleUrl)
 # print('siteWhois::', spider.siteWhois())
 # print('sitemapUrls::', spider.sitemapUrls())
 # print('crawlPaginationById::', spider.crawlPaginationById(biliPaging))
-print('crawlLinksFromPage::', spider.crawlLinksFromPage('/places/default/iso/CN', '/places/default/iso'))
+# print('crawlLinksFromPage::', spider.crawlLinksFromPage('/places/default/iso/CN', '/places/default/iso'))
 
 # spider2 = Spider(exampleUrl, userAngent='BadCrawler')
 # print('crawlLinksFromPage02::', spider2.crawlLinksFromPage(exampleUrl, '/places/default/(view|iso)'))
 
-print('python ok!!!')
+html = spider.download(url=baiduUrl, userAngent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36")
+print(5555, len(html))
+
+print('python end!!!')
